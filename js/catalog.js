@@ -20,6 +20,48 @@ const items = [
         genre: "sci-fi",
         description: "Научная фантастика",
         image: "images/dune.jpg"
+    },
+     {
+        id: 4,
+        name: "The Witcher 3: Wild Hunt",
+        genre: "rpg",
+        description: "Фэнтезийная RPG с открытым миром, где вы играете за ведьмака Геральта.",
+        image: "images/witcher3.jpg"
+    },
+    {
+        id: 5,
+        name: "Cyberpunk 2077",
+        genre: "rpg",
+        description: "RPG в мире будущего, где технологии и киберпанк переплетаются.",
+        image: "images/cyberpunk.jpg"
+    },
+    {
+        id: 6,
+        name: "Half-Life 2",
+        genre: "shooter",
+        description: "Классический шутер от первого лица с захватывающим сюжетом.",
+        image: "images/halflife2.jpg"
+    },
+    {
+        id: 7,
+        name: "Stardew Valley",
+        genre: "simulator",
+        description: "Симулятор фермы с элементами RPG и социальной жизни.",
+        image: "images/stardew.jpg"
+    },
+    {
+        id: 8,
+        name: "Dark Souls III",
+        genre: "action",
+        description: "Экшен с высоким уровнем сложности и мрачной атмосферой.",
+        image: "images/darksouls3.jpg"
+    },
+    {
+        id: 9,
+        name: "Portal 2",
+        genre: "puzzle",
+        description: "Головоломка от первого лица с юмором и уникальным геймплеем.",
+        image: "images/portal2.jpg"
     }
 ];
 

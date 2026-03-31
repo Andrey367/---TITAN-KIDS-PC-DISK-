@@ -65,21 +65,40 @@ const items = [
     }
 ];
 
-// Функция отрисовки карточек
-function renderCatalog(genre = "all") {
+// Переменные текущих фильтров
+let currentGenre = "all";
+let currentSearch = "";
+
+// Функция отрисовки с учётом фильтров
+function renderFilteredCatalog() {
     const catalogDiv = document.getElementById("catalog");
     if (!catalogDiv) return;
 
-    let filteredItems = items;
-    if (genre !== "all") {
-        filteredItems = items.filter(item => item.genre === genre);
-    }
+    // Фильтруем товары
+    let filteredItems = items.filter(item => {
+        // Фильтр по жанру
+        if (currentGenre !== "all" && item.genre !== currentGenre) return false;
 
+        // Фильтр по поисковому запросу (по названию)
+        if (currentSearch.trim() !== "") {
+            const searchLower = currentSearch.toLowerCase();
+            const nameMatch = item.name.toLowerCase().includes(searchLower);
+            // Если нужно искать ещё и по описанию, раскомментируй следующую строку
+            // const descMatch = item.description.toLowerCase().includes(searchLower);
+            // if (!nameMatch && !descMatch) return false;
+            if (!nameMatch) return false;
+        }
+
+        return true;
+    });
+
+    // Если ничего не найдено
     if (filteredItems.length === 0) {
-        catalogDiv.innerHTML = "<p>Нет товаров в этом жанре.</p>";
+        catalogDiv.innerHTML = "<p class='no-results'>Ничего не найдено. Попробуйте другой жанр или название.</p>";
         return;
     }
 
+    // Генерируем HTML карточек
     let html = "";
     filteredItems.forEach(item => {
         html += `
@@ -95,19 +114,54 @@ function renderCatalog(genre = "all") {
     catalogDiv.innerHTML = html;
 }
 
-// Обработка кликов по кнопкам жанров
+// Обработчики событий
 document.addEventListener("DOMContentLoaded", () => {
-    renderCatalog("all");
+    const searchInput = document.getElementById("searchInput");
+    const clearBtn = document.getElementById("clearSearchBtn");
+    const genreButtons = document.querySelectorAll(".genre-buttons button");
 
-    const buttons = document.querySelectorAll(".genre-buttons button");
-    buttons.forEach(btn => {
+    // Начальный рендеринг
+    renderFilteredCatalog();
+
+    // Клики по кнопкам жанров
+    genreButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             // Убираем активный класс у всех
-            buttons.forEach(b => b.classList.remove("active"));
+            genreButtons.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
 
-            const genre = btn.getAttribute("data-genre");
-            renderCatalog(genre);
+            // Обновляем текущий жанр
+            currentGenre = btn.getAttribute("data-genre");
+
+            // Перерисовываем каталог (поисковый запрос остаётся прежним)
+            renderFilteredCatalog();
         });
     });
+
+    // Ввод текста в поле поиска
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            currentSearch = e.target.value;
+
+            // Показываем или скрываем кнопку очистки
+            if (clearBtn) {
+                clearBtn.style.display = currentSearch ? "inline-block" : "none";
+            }
+
+            // Перерисовываем каталог (жанр остаётся прежним)
+            renderFilteredCatalog();
+        });
+    }
+
+    // Очистка поиска
+    if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+            if (searchInput) {
+                searchInput.value = "";
+                currentSearch = "";
+                clearBtn.style.display = "none";
+                renderFilteredCatalog();
+            }
+        });
+    }
 });

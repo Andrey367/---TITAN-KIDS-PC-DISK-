@@ -104,3 +104,40 @@ footer {
     padding: 1rem;
     margin-top: 2rem;
 }
+
+.search-container {
+    text-align: center;
+    margin: 20px 0 30px;
+    position: relative;
+}
+
+#searchInput {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px 35px 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#searchInput:focus {
+    border-color: #333;
+}
+
+#clearSearchBtn {
+    position: relative;
+    left: -40px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #999;
+    display: none; /* скрыта, пока нет текста */
+    padding: 0 5px;
+}
+
+#clearSearchBtn:hover {
+    color: #333;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой каталог</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Каталог товаров</h1>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="catalog.html">Каталог</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="genres">
+            <h2>Жанры</h2>
+            <div class="genre-buttons">
+                <button data-genre="all" class="active">Все</button>
+                <button data-genre="fantasy">Фэнтези</button>
+                <button data-genre="detective">Детектив</button>
+                <button data-genre="sci-fi">Научная фантастика</button>
+                <button data-genre="action">Экшн</button>
+                <button data-genre="adventure">Приключения</button>
+                <button data-genre="rpg">RPG</button>
+                <button data-genre="shooter">Шутер</button>
+                <button data-genre="strategy">Стратегия</button>
+                <button data-genre="simulator">Симулятор</button>
+                <button data-genre="sport">Спорт</button>
+                <button data-genre="racing">Гонки</button>
+                <button data-genre="puzzle">Головоломка</button>
+                <button data-genre="horror">Хоррор</button>
+                <button data-genre="survival">Выживание</button>
+                <button data-genre="sandbox">Песочница</button>
+                <button data-genre="indie">Инди</button>
+                <button data-genre="mmo">MMO</button>
+                <button data-genre="arcade">Аркада</button>
+                <button data-genre="fighting">Файтинг</button>
+                <button data-genre="platformer">Платформер</button>
+                <button data-genre="stealth">Стелс</button>
+                <button data-genre="visual-novel">Визуальная новелла</button>
+                <button data-genre="rhythm">Ритм-игра</button>
+                <button data-genre="roguelike">Рогалик</button>
+                <button data-genre="card">Карточная</button>
+                <button data-genre="educational">Образовательная</button>
+            </div>
+        </section>
+
+        <section class="catalog" id="catalog">
+            <!-- Здесь будут карточки товаров, которые мы добавим позже -->
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Мой каталог</p>
+    </footer>
+
+    <script src="js/catalog.js"></script>
+</body>
+</html>
